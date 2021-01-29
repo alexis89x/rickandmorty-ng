@@ -1,0 +1,14 @@
+.ca-app {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  &__header {
+    height: 75px;
+  }
+  &__content {
+    flex: 1;
+  }
+  &__footer {
+    height: 75px;
+  }
+}

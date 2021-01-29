@@ -1,0 +1,14 @@
+<div
+  class="search-results"
+  infiniteScroll
+  [infiniteScrollDistance]="2"
+  [infiniteScrollThrottle]="50"
+  (scrolled)="onScroll()"
+>
+  <dib *ngFor="let item of items" class="character">
+    <ca-character [character]="item"></ca-character>
+  </dib>
+</div>
+
+
+
