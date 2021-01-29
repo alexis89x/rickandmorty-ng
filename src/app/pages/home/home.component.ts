@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DataService } from '../../services/data.service';
 import { RMApiCharacterResult, RMApiResult } from '../../models/data.interface';
 import { Observable } from 'rxjs';
-import { map, tap } from 'rxjs/operators';
-import { response } from 'express';
+import { map, tap, throttle, throttleTime } from 'rxjs/operators';
 
 @Component({
   selector: 'ca-home',
@@ -14,6 +13,7 @@ export class HomeComponent implements OnInit {
 
   items: RMApiCharacterResult[];
   currentPage = 1;
+  loading: boolean;
 
   constructor(
     private dataService: DataService
@@ -34,9 +34,13 @@ export class HomeComponent implements OnInit {
   }
 
   onScroll(): void {
+    if (this.loading) { return; }
+    this.loading = true;
     this.getCharacters(this.currentPage + 1)
-      .pipe(tap(() => this.currentPage++))
-      .subscribe(characters => {
+      .pipe(
+        tap(() => this.currentPage++)
+      ).subscribe(characters => {
+        this.loading = false;
         this.items = [...this.items, ...characters ];
       });
     console.log('scrolled!!');
