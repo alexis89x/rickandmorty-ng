@@ -3,7 +3,35 @@
     <div class="character-box-image">
       <img src="{{character.image}}" alt="{{character.name}}" />
     </div>
-    <div class="character-box-title">{{character.name}}</div>
+    <div class="character-box-title">
+      <h1>{{character.name}}</h1>
+      <h3>
+        <span class="character-status character-status--{{character.status.toLowerCase()}}"></span>
+        {{character.status}}
+      </h3>
+      <h3>Species: {{character.species}}</h3>
+    </div>
   </div>
-  <div class="character-box-info"></div>
+  <div class="character-box-info">
+    <p class="character-info-detail">
+      <label>Location:</label>
+      <span>{{character.location.name}}</span>
+    </p>
+    <p class="character-info-detail">
+      <label>Origin:</label>
+      <span>{{character.origin.name}}</span>
+    </p>
+    <p class="character-info-detail">
+      <label>First Episode:</label>
+      <span *ngFor="let episode of character.episode.slice(0, 1)">
+      <a href="{{episode}}" target="_blank">{{episode | inferEpisodeName:episodeList}}</a>
+    </span>
+    </p>
+    <p class="character-info-detail">
+      <label>Appears in:</label>
+      <span>
+        {{character.episode.length}} episode{{character.episode.length === 1 ? '': 's'}}
+      </span>
+    </p>
+  </div>
 </div>

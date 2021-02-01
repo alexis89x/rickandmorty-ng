@@ -1,4 +1,30 @@
 .search-results {
   // overflow: auto;
+  align-items: center;
   width: 100%;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.character {
+  width: 33%;
+}
+
+@media only screen and (max-width: 1280px) {
+  .character-box {
+    width: 33%;
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .character {
+    width: 50%;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .character {
+    width: 100%;
+  }
 }

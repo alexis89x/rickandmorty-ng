@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../../services/data.service';
-import { RMApiCharacterResult, RMApiResult } from '../../models/data.interface';
+import { RMApiCharacter, RMApiEpisode, RMApiResult } from '../../models/data.interface';
 import { Observable } from 'rxjs';
 import { map, tap, throttle, throttleTime } from 'rxjs/operators';
+import { extractEpisodesFromCharacter } from '../../utils/episode.utils';
 
 @Component({
   selector: 'ca-home',
@@ -11,7 +12,8 @@ import { map, tap, throttle, throttleTime } from 'rxjs/operators';
 })
 export class HomeComponent implements OnInit {
 
-  items: RMApiCharacterResult[];
+  characters: RMApiCharacter[];
+  episodes: RMApiEpisode[];
   currentPage = 1;
   loading: boolean;
 
@@ -19,7 +21,7 @@ export class HomeComponent implements OnInit {
     private dataService: DataService
   ) { }
 
-  getCharacters(pageNumber: number): Observable<RMApiCharacterResult[]> {
+  getCharacters(pageNumber: number): Observable<RMApiCharacter[]> {
     return this.dataService.getCharacters(pageNumber)
       .pipe(
         map((resp: RMApiResult) => resp.results)
@@ -29,7 +31,16 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.getCharacters(this.currentPage)
       .subscribe(characters => {
-        this.items = characters;
+        const requiredEpisodeList = new Set(
+          ...(characters.map(extractEpisodesFromCharacter))
+        );
+        this.dataService.getEpisodes(Array.from(requiredEpisodeList))
+          .subscribe(episodes => {
+            this.episodes = episodes;
+            this.characters = characters;
+            console.log(episodes);
+          });
+        console.log(requiredEpisodeList);
       });
   }
 
@@ -41,7 +52,11 @@ export class HomeComponent implements OnInit {
         tap(() => this.currentPage++)
       ).subscribe(characters => {
         this.loading = false;
-        this.items = [...this.items, ...characters ];
+        this.characters = [...this.characters, ...characters ];
+        const requiredEpisodeList = new Set(
+          ...(this.characters.map(extractEpisodesFromCharacter))
+        );
+        console.log(requiredEpisodeList);
       });
     console.log('scrolled!!');
   }

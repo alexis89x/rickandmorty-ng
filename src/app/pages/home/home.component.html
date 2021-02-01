@@ -5,9 +5,9 @@
   [infiniteScrollThrottle]="50"
   (scrolled)="onScroll()"
 >
-  <dib *ngFor="let item of items" class="character">
-    <ca-character [character]="item"></ca-character>
-  </dib>
+  <div *ngFor="let item of characters" class="character">
+    <ca-character [character]="item" [episodeList]="episodes"></ca-character>
+  </div>
 </div>
 
 

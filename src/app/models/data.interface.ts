@@ -9,7 +9,7 @@ export interface RMApiInfoResult {
   prev: string;
 }
 
-export interface RMApiCharacterResult {
+export interface RMApiCharacter {
   id: number;
   name: string;
   status: string;
@@ -32,5 +32,21 @@ export interface RMApiCharacterResult {
 
 export interface RMApiResult {
   info: RMApiInfoResult;
-  results: RMApiCharacterResult[];
+  results: RMApiCharacter[];
 }
+
+export interface RMApiEpisode {
+  id: number;
+  name: string;
+  air_date: string;
+  episode: string;
+  characters: string[];
+  url: string;
+  created: string;
+}
+
+export interface RMApiEpisodeResult {
+  info: RMApiInfoResult;
+  results: RMApiEpisode[];
+}
+
