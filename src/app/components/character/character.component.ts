@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { RMApiCharacterResult } from '../../models/data.interface';
+import { RMApiCharacter, RMApiEpisode } from '../../models/data.interface';
 
 @Component({
   selector: 'ca-character',
@@ -8,11 +8,13 @@ import { RMApiCharacterResult } from '../../models/data.interface';
 })
 export class CharacterComponent implements OnInit {
 
-  @Input() character: RMApiCharacterResult;
+  @Input() character: RMApiCharacter;
+  @Input() episodeList: RMApiEpisode[];
 
   constructor() { }
 
   ngOnInit(): void {
+    // console.log(this.character);
   }
 
 }
