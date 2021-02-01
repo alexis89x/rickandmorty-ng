@@ -9,6 +9,8 @@ import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CharacterComponent } from './components/character/character.component';
+import { InferEpisodeNumberPipe } from './pipes/infer-episode-number.pipe';
+import { InferEpisodeNamePipe } from './pipes/infer-episode-name.pipe';
 
 
 @NgModule({
@@ -17,7 +19,9 @@ import { CharacterComponent } from './components/character/character.component';
     HomeComponent,
     HeaderComponent,
     FooterComponent,
-    CharacterComponent
+    CharacterComponent,
+    InferEpisodeNumberPipe,
+    InferEpisodeNamePipe
   ],
   imports: [
     BrowserModule,
