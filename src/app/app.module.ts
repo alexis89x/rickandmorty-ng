@@ -11,6 +11,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { CharacterComponent } from './components/character/character.component';
 import { InferEpisodeNumberPipe } from './pipes/infer-episode-number.pipe';
 import { InferEpisodeNamePipe } from './pipes/infer-episode-name.pipe';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 
 @NgModule({
@@ -27,7 +29,8 @@ import { InferEpisodeNamePipe } from './pipes/infer-episode-name.pipe';
     BrowserModule,
     HttpClientModule,
     InfiniteScrollModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [],
   bootstrap: [AppComponent]
