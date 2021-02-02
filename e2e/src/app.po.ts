@@ -6,6 +6,6 @@ export class AppPage {
   }
 
   async getTitleText(): Promise<string> {
-    return element(by.css('ca-root .content span')).getText();
+    return element(by.css('title')).getText();
   }
 }

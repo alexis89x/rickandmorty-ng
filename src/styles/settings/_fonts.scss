@@ -1,0 +1,173 @@
+// Font types
+$ca-font-type-lato: 'Lato', sans-serif;
+
+// Font sizes
+$ca-font-size-xl: 32px;
+$ca-font-size-x: 21px;
+$ca-font-size-m: 18px;
+$ca-font-size-s: 15px;
+$ca-font-size-xs: 12px;
+
+.ca-font-light {
+  font-weight: 300;
+}
+
+.ca-font-normal {
+  font-weight: 400;
+}
+
+.ca-font-bold {
+  font-weight: 700;
+}
+
+.ca-text-align {
+  &-left {
+    text-align: left;
+  }
+
+  &-right {
+    text-align: right;
+  }
+
+  &-center {
+    text-align: center;
+  }
+}
+
+// Heading fonts
+h1,
+.ca-text-h1 {
+  @extend .ca-font-bold;
+  font-size: 32px;
+  line-height: 39px;
+}
+
+h2,
+.ca-text-h2 {
+  font-size: 21px;
+  @extend .ca-font-bold;
+  line-height: 25px;
+}
+
+//region Light fonts
+.ca-text-light-xs,
+.ca-text-light-s,
+.ca-text-light-m,
+.ca-text-light-l,
+.ca-text-light-xl,
+.ca-text-light-xxl {
+  @extend .ca-font-light;
+}
+
+.ca-text-light-xs {
+  font-size: 10px;
+  line-height: 14px;
+}
+
+.ca-text-light-s {
+  font-size: 12px;
+  line-height: 16px;
+}
+
+.ca-text-light-m {
+  font-size: 14px;
+  line-height: 18px;
+}
+
+.ca-text-light-l {
+  font-size: 16px;
+  line-height: 20px;
+}
+
+.ca-text-light-xl {
+  font-size: 18px;
+  line-height: 22px;
+}
+
+.ca-text-light-xxl {
+  font-size: 20px;
+  line-height: 24px;
+}
+//endregion
+
+//region Base fonts
+.ca-text-base-xs,
+.ca-text-base-s,
+.ca-text-base-m,
+.ca-text-base-l,
+.ca-text-base-xl,
+.ca-text-base-xxl {
+  @extend .ca-font-normal;
+}
+
+.ca-text-base-xs {
+  font-size: 10px;
+  line-height: 14px;
+}
+
+.ca-text-base-s {
+  font-size: 12px;
+  line-height: 16px;
+}
+
+.ca-text-base-m {
+  font-size: 14px;
+  line-height: 18px;
+}
+
+.ca-text-base-l {
+  font-size: 16px;
+  line-height: 20px;
+}
+
+.ca-text-base-xl {
+  font-size: 18px;
+  line-height: 22px;
+}
+
+.ca-text-base-xxl {
+  font-size: 20px;
+  line-height: 24px;
+}
+//endregion
+
+//region Bold fonts
+.ca-text-bold-xs,
+.ca-text-bold-s,
+.ca-text-bold-m,
+.ca-text-bold-l,
+.ca-text-bold-xl,
+.ca-text-bold-xxl {
+  @extend .ca-font-bold;
+}
+
+.ca-text-bold-xs {
+  font-size: 10px;
+  line-height: 12px;
+}
+
+.ca-text-bold-s {
+  font-size: 12px;
+  line-height: 14px;
+}
+
+.ca-text-bold-m {
+  font-size: 14px;
+  line-height: 16px;
+}
+
+.ca-text-bold-l {
+  font-size: 16px;
+  line-height: 20px;
+}
+
+.ca-text-bold-xl {
+  font-size: 18px;
+  line-height: 22px;
+}
+
+.ca-text-bold-xxl {
+  font-size: 20px;
+  line-height: 24px;
+}
+//endregion

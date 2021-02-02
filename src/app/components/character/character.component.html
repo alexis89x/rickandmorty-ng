@@ -1,33 +1,35 @@
-<div class="character-box">
-  <div class="character-box-summary">
-    <div class="character-box-image">
+<!-- Could have been splitted much more -->
+<div class="character-card">
+  <div class="character-card__header">
+    <div class="character-card__header__image">
       <img src="{{character.image}}" alt="{{character.name}}" />
     </div>
-    <div class="character-box-title">
-      <h1>{{character.name}}</h1>
-      <h3>
+    <div class="character-card__header__title">
+      <p class="ca-text-bold-xl">{{character.name}}</p>
+      <p class="ca-text-base-m">
         <span class="character-status character-status--{{character.status.toLowerCase()}}"></span>
         {{character.status}}
-      </h3>
-      <h3>Species: {{character.species}}</h3>
+      </p>
+      <p class="ca-text-base-m">
+        <span class="ca-text-bold-m">Species:</span> {{character.species}}</p>
     </div>
   </div>
-  <div class="character-box-info">
-    <p class="character-info-detail">
+  <div class="character-card__body">
+    <p class="character-card__body__info">
       <label>Location:</label>
       <span>{{character.location.name}}</span>
     </p>
-    <p class="character-info-detail">
+    <p class="character-card__body__info">
       <label>Origin:</label>
       <span>{{character.origin.name}}</span>
     </p>
-    <p class="character-info-detail">
+    <p class="character-card__body__info">
       <label>First Episode:</label>
       <span *ngFor="let episode of character.episode.slice(0, 1)">
-      <a href="{{episode}}" target="_blank">{{episode | inferEpisodeName:episodeList}}</a>
+      <a class="ca-link" rel="noreferrer" href="{{episode}}" target="_blank">{{episode | inferEpisodeName:episodeList}}</a>
     </span>
     </p>
-    <p class="character-info-detail">
+    <p class="character-card__body__info">
       <label>Appears in:</label>
       <span>
         {{character.episode.length}} episode{{character.episode.length === 1 ? '': 's'}}

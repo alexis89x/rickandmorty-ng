@@ -1,10 +1,8 @@
 import { Injectable } from '@angular/core';
-import { RMApiCharacter, RMApiEpisode, RMApiResult, RMCharacter } from '../models/data.interface';
+import { RMApiEpisode, RMApiResult } from '../models/data.interface';
 import { HttpClient } from '@angular/common/http';
-import { response } from 'express';
 import { Observable } from 'rxjs';
-import { debounce, throttleTime } from 'rxjs/operators';
-import { extractEpisodesFromCharacter } from '../utils/episode.utils';
+import { throttleTime } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -13,17 +11,15 @@ export class DataService {
 
   private baseApiUrl = 'https://rickandmortyapi.com/api';
 
-  private episodeMap = {};
-
   constructor(
     private http: HttpClient
   ) {}
 
   getCharacters(page: number = 1): Observable<RMApiResult> {
     const url = `${this.baseApiUrl}/character?page=${page}`;
+    // Not necessary, just in case you want to do some operations on the result
     return new Observable<RMApiResult>(observer => {
       this.http.get<RMApiResult>(url)
-        .pipe(throttleTime(500))
         .subscribe(resp => {
           observer.next(resp);
         });
@@ -31,19 +27,8 @@ export class DataService {
   }
 
   getEpisodes(episodesList: number[]): Observable<RMApiEpisode[]> {
-    // Obtain required episode list by filtering already p
+    // TODO Implement internal map && error handling
     const url = `${this.baseApiUrl}/episode/${episodesList.join(',')}`;
     return this.http.get<RMApiEpisode[]>(url);
   }
-/*
-  getEpisodesFromCharacters(characterList: RMApiCharacter[]): Observable<RMApiEpisode[]>  {
-    const requiredEpisodeList = new Set(
-      ...characterList.map(extractEpisodesFromCharacter)
-    );
-    console.log(requiredEpisodeList);
-  }
-
-  https://rickandmortyapi.com/api/episode/
-
- */
 }

@@ -1,0 +1,16 @@
+.ca-link {
+  cursor: pointer;
+  font-family: $theme-font-base;
+  text-decoration: underline;
+
+  &,
+  &:visited,
+  &:active {
+    color: $theme-link-color;
+  }
+
+  &:hover,
+  &:focus {
+    text-decoration: none;
+  }
+}
