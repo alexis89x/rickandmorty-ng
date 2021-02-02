@@ -17,17 +17,26 @@
   <div class="character-card__body">
     <p class="character-card__body__info">
       <label>Location:</label>
-      <span>{{character.location.name}}</span>
+      <span *ngIf="character.location.url">
+        <a class="ca-link" href="{{character.location.url}}" target="_blank" rel="noreferrer">
+          {{character.location.name}}</a>
+      </span>
+      <span *ngIf="!character.location.url">{{character.location.name}}</span>
     </p>
     <p class="character-card__body__info">
       <label>Origin:</label>
-      <span>{{character.origin.name}}</span>
+      <span *ngIf="character.origin.url">
+        <a class="ca-link" href="{{character.origin.url}}" target="_blank" rel="noreferrer">
+          {{character.origin.name}}</a>
+      </span>
+      <span *ngIf="!character.origin.url">{{character.origin.name}}</span>
     </p>
     <p class="character-card__body__info">
       <label>First Episode:</label>
       <span *ngFor="let episode of character.episode.slice(0, 1)">
-      <a class="ca-link" rel="noreferrer" href="{{episode}}" target="_blank">{{episode | inferEpisodeName:episodeList}}</a>
-    </span>
+        <a class="ca-link" rel="noreferrer" href="{{episode}}" target="_blank">
+          {{episode | inferEpisodeName:episodeList}}</a>
+      </span>
     </p>
     <p class="character-card__body__info">
       <label>Appears in:</label>
