@@ -44,9 +44,3 @@ export interface RMApiEpisode {
   url: string;
   created: string;
 }
-
-export interface RMApiEpisodeResult {
-  info: RMApiInfoResult;
-  results: RMApiEpisode[];
-}
-

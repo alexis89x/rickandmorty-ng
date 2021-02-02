@@ -2,11 +2,19 @@
   class="character-list"
   infiniteScroll
   [infiniteScrollDistance]="2"
-  [infiniteScrollThrottle]="100"
+  [infiniteScrollThrottle]="50"
   (scrolled)="onScroll()"
 >
-  <div *ngFor="let item of characters; trackBy: trackById" class="character-list-item">
-    <ca-character [character]="item" [episodeList]="episodes"></ca-character>
+  <ng-container *ngIf="characters.length">
+    <div *ngFor="let item of characters; trackBy: trackById" class="character-list-item">
+      <ca-character [character]="item" [episodeList]="episodes"></ca-character>
+    </div>
+  </ng-container>
+  <div *ngIf="isLoading" class="character-list-item character-list-item--warning">
+    Loading...
+  </div>
+  <div *ngIf="!characters.length" class="character-list-item character-list-item--warning">
+    No characters available.
   </div>
 </div>
 

@@ -34,6 +34,7 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.characters = [];
     this.getCharacters(this.currentPage)
       .subscribe(characters => {
         const requiredEpisodeList = new Set(
