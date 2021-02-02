@@ -8,7 +8,7 @@
   color: $theme-header-text-color;
   display: flex;
   flex-direction: row;
-  height: 100%;
+  height: $theme-footer-height;
   justify-content: center;
   width: 100%;
 }

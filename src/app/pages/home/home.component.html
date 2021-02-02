@@ -1,8 +1,8 @@
 <div
   class="character-list"
   infiniteScroll
-  [infiniteScrollDistance]="1"
-  [infiniteScrollThrottle]="100"
+  [infiniteScrollDistance]="2"
+  [infiniteScrollThrottle]="75"
   (scrolled)="onScroll()"
 >
   <ng-container *ngIf="characters.length">
@@ -13,7 +13,7 @@
   <div *ngIf="isLoading" class="character-list-item character-list-item--warning">
     Loading...
   </div>
-  <div *ngIf="!characters.length" class="character-list-item character-list-item--warning">
+  <div *ngIf="!isLoading && !characters.length" class="character-list-item character-list-item--warning">
     No characters available.
   </div>
 </div>

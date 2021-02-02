@@ -23,11 +23,20 @@ export class HomeComponent implements OnInit {
   ) { }
 
   getCharacters(pageNumber: number): Observable<RMApiCharacter[]> {
+    this.isLoading = true;
     return this.dataService.getCharacters(pageNumber)
       .pipe(
+        catchError(() => {
+          alert('Error while loading characters');
+          // Should be done a better error handling though
+          return of(null);
+        }),
         tap((resp: RMApiResult) => {
-          // API returns available number of pages. Save it to prevent unecessary calls.
-          this.maxPages = resp.info.pages;
+          if (resp) {
+            // API returns available number of pages. Save it to prevent unecessary calls.
+            this.maxPages = resp.info.pages;
+          }
+          this.isLoading = false;
         }),
         map((resp: RMApiResult) => resp.results)
       );
@@ -37,6 +46,8 @@ export class HomeComponent implements OnInit {
     this.characters = [];
     this.getCharacters(this.currentPage)
       .subscribe(characters => {
+        if (!characters) { return; }
+
         const requiredEpisodeList = new Set(
           ...(characters.map(extractEpisodesFromCharacter))
         );
@@ -54,21 +65,12 @@ export class HomeComponent implements OnInit {
 
   onScroll(): void {
     if (!this.canScroll()) { return; }
-    this.isLoading = true;
-
     this.getCharacters(this.currentPage + 1)
       .pipe(
-        catchError(() => {
-          // Should be done a better error handling though
-          return of(null);
-        }),
         tap((resp) => resp && this.currentPage++)
       ).subscribe(characters => {
-        if (!characters) {
-          alert('Error while loading characters');
-          return;
-        }
-        this.isLoading = false;
+        if (!characters) { return; }
+
         this.characters = [...this.characters, ...characters ];
         /*const requiredEpisodeList = new Set(
           ...(this.characters.map(extractEpisodesFromCharacter))
