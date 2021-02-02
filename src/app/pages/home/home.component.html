@@ -1,8 +1,8 @@
 <div
   class="character-list"
   infiniteScroll
-  [infiniteScrollDistance]="2"
-  [infiniteScrollThrottle]="50"
+  [infiniteScrollDistance]="1"
+  [infiniteScrollThrottle]="100"
   (scrolled)="onScroll()"
 >
   <ng-container *ngIf="characters.length">
