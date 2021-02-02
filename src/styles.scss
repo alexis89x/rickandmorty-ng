@@ -1,15 +1,11 @@
 @import "~normalize.css";
-
-// ITCSS architecture
+// Local deps
+@import "./styles/settings";
+@import "./styles/generic";
+@import "./styles/tools";
+@import "./styles/theme";
+@import "./styles/elements";
 
 * {
-  box-sizing: border-box;
-}
-
-html, body {
-  font-family: 'Lato', sans-serif;
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  width: 100%;
+  font-family: $ca-font-type-lato;
 }

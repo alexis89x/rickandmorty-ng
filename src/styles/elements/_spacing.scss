@@ -1,0 +1,51 @@
+.ca-margin-bottom {
+  &-1 {
+    margin-bottom: $ca-base;
+  }
+
+  &-2 {
+    margin-bottom: $ca-base-2;
+  }
+
+  &-3 {
+    margin-bottom: $ca-base-3;
+  }
+
+  &-4 {
+    margin-bottom: $ca-base-4;
+  }
+
+  &-5 {
+    margin-bottom: $ca-base-5;
+  }
+
+  &-6 {
+    margin-bottom: 6*$ca-base;
+  }
+}
+
+.ca-margin-top {
+  &-1 {
+    margin-top: $ca-base;
+  }
+
+  &-2 {
+    margin-top: $ca-base-2;
+  }
+
+  &-3 {
+    margin-top: $ca-base-3;
+  }
+
+  &-4 {
+    margin-top: $ca-base-4;
+  }
+
+  &-5 {
+    margin-top: $ca-base-5;
+  }
+
+  &-6 {
+    margin-top: 6*$ca-base;
+  }
+}

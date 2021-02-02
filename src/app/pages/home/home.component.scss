@@ -1,30 +1,25 @@
-.search-results {
-  // overflow: auto;
+@import '/src/styles/settings';
+
+.character-list {
   align-items: center;
-  width: 100%;
   display: flex;
-  justify-content: space-between;
   flex-wrap: wrap;
+  justify-content: space-between;
+  width: 100%;
 }
 
-.character {
+.character-list-item {
   width: 33%;
 }
 
-@media only screen and (max-width: 1280px) {
-  .character-box {
-    width: 33%;
-  }
-}
-
-@media only screen and (max-width: 1024px) {
-  .character {
+@media only screen and (max-width: $ca-bp-sm) {
+  .character-list-item {
     width: 50%;
   }
 }
 
-@media only screen and (max-width: 600px) {
-  .character {
+@media only screen and (max-width: $ca-bp-xs) {
+  .character-list-item {
     width: 100%;
   }
 }

@@ -1,14 +1,19 @@
+@import '/src/styles/settings';
+@import '/src/styles/theme';
+
 .ca-header {
+  $logo-size: 36px;
   align-items: center;
-  box-shadow: rgb(0 0 0 / 10%) 0px 1px 0px;
-  color: black;
+  background-color: $theme-header-background;
+  box-shadow: $theme-border-color 0 1px 0;
+  color: $theme-header-text-color;
   display: flex;
   flex-direction: row;
   height: 100%;
   justify-content: center;
   width: 100%;
   img {
-    height: 36px;
-    width: 36px;
+    height: $logo-size;
+    width: $logo-size;
   }
 }

@@ -1,14 +1,13 @@
 <div
-  class="search-results"
+  class="character-list"
   infiniteScroll
   [infiniteScrollDistance]="2"
-  [infiniteScrollThrottle]="50"
+  [infiniteScrollThrottle]="100"
   (scrolled)="onScroll()"
 >
-  <div *ngFor="let item of characters" class="character">
+  <div *ngFor="let item of characters; trackBy: trackById" class="character-list-item">
     <ca-character [character]="item" [episodeList]="episodes"></ca-character>
   </div>
 </div>
-
 
 
